@@ -1,0 +1,35 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Environment variable files
+.env
+*.env
+Pipfile*
+
+# Django migrations
+*/migrations/*.pyc
+*/migrations/__pycache__/
+
+# Database files
+db.sqlite3
+
+# IDE/editor config files
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Static files (optional if you collectstatic)
+staticfiles/
+
+# Byte-compiled / optimized / DLL files
+*.so
+*.egg-info/
+*.egg
+
+# Virtual environment folder (optional)
+venv/
+ENV/
+env/
