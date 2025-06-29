@@ -1,12 +1,13 @@
 from django.urls import path
-from .views import listing_list_create, listing_detail, booking_list_create, booking_detail
+from rest_framework.routers import DefaultRouter
+from django.urls import path
+from .views import ListingViewSet, BookingViewSet, InitiatePaymentView, VerifyPaymentView
 
-urlpatterns = [
-    # Listings API
-    path('listings/', listing_list_create, name='listing-list-create'),
-    path('listings/<int:pk>/', listing_detail, name='listing-detail'),
+router = DefaultRouter()
+router.register(r'listings', ListingViewSet)
+router.register(r'bookings', BookingViewSet)
 
-    # Bookings API
-    path('bookings/', booking_list_create, name='booking-list-create'),
-    path('bookings/<int:pk>/', booking_detail, name='booking-detail'),
+urlpatterns = router.urls + [
+    path('payments/initiate/<int:booking_id>/', InitiatePaymentView.as_view(), name='initiate-payment'),
+    path('payments/verify/<str:tx_ref>/', VerifyPaymentView.as_view(), name='verify-payment'),
 ]
